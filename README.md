@@ -100,6 +100,107 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 - Add a managed Cisco switch  
 - Deploy Proxmox for VM hosting  
 - Implement network monitoring tools (Zabbix/LibreNMS)
+- Home Network Lab Documentation
+1. Project Overview
+Brief description of your home network lab
+
+Purpose of the project (learning, security hardening, career development, etc.)
+
+Key technologies and tools being used
+
+2. Network Topology
+Network Diagram (Visual)
+
+Full map of devices, VLANs, and connections
+
+VLAN Design
+
+List of VLANs with IDs, purposes, and subnets
+
+Rationale for segmentation
+
+3. Hardware Inventory
+List of all physical devices
+
+Firewall (OPNsense box)
+
+Switches (TP-Link, future Cisco)
+
+Wi-Fi Access Points (Synology / Ubiquiti plan)
+
+Servers (Ubuntu server, etc.)
+
+IoT devices, Cameras, Media servers
+
+4. Services & Software Stack
+Firewall (OPNsense)
+
+Basic config
+
+VLAN setup details
+
+Rules and policies summary
+
+DNS
+
+Unbound setup
+
+OpenDNS integration
+
+Pi-hole integration (if added)
+
+VPN
+
+WireGuard setup notes
+
+SIEM & Security
+
+Security Onion notes (planned or active)
+
+Metrics & Monitoring
+
+Grafana setup and dashboards
+
+Media Services
+
+Jellyfin setup
+
+5. Configuration Details
+Interface assignments
+
+DHCP scopes for VLANs
+
+NTP configuration
+
+DNS forwarding setup
+
+Firewall rule sets (summarized, not actual rules for security reasons)
+
+VPN configs
+
+6. Key Decisions & Rationale
+Why you chose each piece of software and hardware
+
+Advantages and limitations
+
+Alternatives you considered
+
+7. Lessons Learned
+Challenges encountered
+
+Solutions you implemented
+
+Improvements you plan to make
+
+8. Future Plans
+Next tools or hardware to add
+
+Features you want to experiment with
+
+9. Resources
+Links to official docs, tutorials you followed, etc.
+
+
 
 ---
 
