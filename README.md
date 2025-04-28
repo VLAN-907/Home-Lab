@@ -64,7 +64,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 | 10      | LAN          | 192.168.10.0/24 | Default Untagged         |
 | 20      | Trusted      | 192.168.20.0/24 | Trusted Devices          |
 | 30      | IoT          | 192.168.30.0/24 | IoT/Smart Devices        |
-| 40      | Guest        | 192.168.40.0/24 | Guest WiFi               |
+| 40      | Guest        | 192.168.40.0/27 | Guest WiFi               |
 | 50      | Cameras      | 192.168.50.0/24 | IP Cameras               |
 | 70      | Media        | 192.168.70.0/24 | Streaming devices/Jellyfin|
 | 99      | Management   | 192.168.99.0/24 | Network device management|
