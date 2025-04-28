@@ -12,4 +12,7 @@ opendns for external and also filter.  Turned on filter for adult sites and ille
 
 -and reference resources
   -opnsense forum:   https://forum.opnsense.org/index.php?topic=30284.0
+  -https://docs.opnsense.org/manual/unbound.html
   -reddit:   https://www.reddit.com/r/opnsense/comments/15d9uc2/opendns_not_working/?rdt=48225
+  -Leak Test:   https://www.dnsleaktest.com
+
