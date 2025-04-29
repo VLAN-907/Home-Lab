@@ -103,6 +103,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 - Home Network Lab Documentation
 1. Project Overview
 Brief description of your home network lab
+-key management
 
 Purpose of the project (learning, security hardening, career development, etc.)
 
