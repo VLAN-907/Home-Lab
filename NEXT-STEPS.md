@@ -52,19 +52,21 @@ A running list of improvements, upgrades, and experiments planned for my home ne
 - **Deploy a management VLAN (VLAN 99)**  
   _Plan: Use VLAN 99 for network management services and possibly as a dead-end for unauthorized traffic._
 
-
-
-
-
-
-Network Hardening
+- **Network Hardening
   -Configuration that exposes a large attack surface,
   -open service ports, 
   -weak or no authentication, 
   -use of default credentials, 
-  -lack of secure communication / encryption
--RADIUS/NAC server (like FreeRADIUS) to test AAA setups
+  -lack of secure communication / encryption**
 
--SYSLOG server to collect logs from Cisco devices
+- **RADIUS/NAC server (like FreeRADIUS) to test AAA setups**   
+
+- **SYSLOG server to collect logs from Cisco devices**  
+
+
+
+
+
+
 
 -NetFlow collector (like ntopng or nfdump) to parse Cisco NetFlow exports
