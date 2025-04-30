@@ -101,12 +101,6 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 ---
 
-## License  
-
-This repository is open-sourced under the [MIT License](./LICENSE).
-
----
-
 ## Contact  
 
 If you're interested in this project or have suggestions, feel free to connect with me on LinkedIn or reach out via GitHub Issues.
