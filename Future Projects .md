@@ -1,72 +1,81 @@
-# 📑 Future Projects / Things to Implement
+# 📌 Future Home Network Stack Plans
 
-A running list of improvements, upgrades, and experiments planned for my home network lab environment.
+## 🔧 Hardware
+- Integrate Ubiquiti or Cisco enterprise APs  
+- Add a managed Cisco switch  
+- Possibly replace OPNsense router with Cisco ISR (C1100 or C1111 series)  
+- Expand server infrastructure (Proxmox cluster or additional lab servers)
 
-## ✅ Planned Network Projects
+## 📊 Network Monitoring & SIEM
+- Implement network monitoring tools (Zabbix, LibreNMS)
+- Set up Grafana dashboards for visual metrics
+- Deploy Security Onion for centralized SIEM and intrusion detection  
 
-- **Deploy a SIEM solution**  
-  _Plan: Implement Security Onion for network security event monitoring._
+## 🔐 Security & Key Management
+- Integrate a free, open-source key management system (HashiCorp Vault or alternatives)
+- Plan for centralized key management for VPNs, services, and secrets  
 
-- **Stand up a key management solution**  
-  _Plan: Deploy HashiCorp Vault (or alternative open-source option) for secure key and secret storage._
+## 📚 Documentation & Knowledge Management
+- Maintain full Home Network Lab Documentation on GitHub (network diagrams, configs, decisions)
+- Possibly mirror or sync documentation in Obsidian for local offline notes
 
-- **Deploy GNS3 network emulator**  
-  _Plan: Set up a dedicated VM for GNS3 to simulate enterprise-grade network topologies and Cisco environments._
+## 🌐 Virtualization & Lab Environment
+- Run GNS3 for virtual network simulation and Cisco image testing  
+- Create dedicated VM for GNS3 server instead of running locally on a laptop  
 
-- **Automate WireGuard VPN peer management**  
-  _Plan: Create scripts or tools to streamline key generation and peer configuration for VPN connections._
+## 🗂️ DNS & Filtering  
+- Integrate Pi-hole for DNS filtering  
+- Decide whether to replace or integrate alongside Unbound and OpenDNS  
 
-- **Finalize network documentation repository**  
-  _Plan: Continue developing and publishing network diagrams, config notes, and setup documentation to GitHub and/or Obsidian vault._
+## 🔒 VPN & Remote Access  
+- Finalize WireGuard setup for secure VPN access  
+- Explore automating key generation and distribution for VPN clients  
 
-- **Automate OPNsense config backups**  
-  _Plan: Configure scheduled automated backups of OPNsense configuration files._
+## 📑 Future Configuration Tasks
+- Create VLAN 99 as the default untagged management VLAN  
+- Build out additional VLANs for IoT, Guests, Servers, and Security Onion  
+- Review DHCP server scopes and resilience plans  
+- Set up scheduled configuration backups for OPNsense  
+- Investigate firmware auto-update options for OPNsense or Cisco gear  
 
-- **Evaluate firmware auto-update strategy for OPNsense**  
-  _Plan: Research and implement a safe, controlled method for firmware updates if practical._
+# 📖 Home Network Lab Documentation Outline
 
-- **Implement segmented VLANs**  
-  _Plan: Design and deploy multiple VLANs for device segmentation and improved security once the network baseline is stable._
+## 1. Project Overview
+- Purpose: Learning, security hardening, career development  
+- Key technologies and tools  
 
-- **Deploy centralized syslog server**  
-  _Plan: Configure a central log aggregation service for OPNsense and other network hardware._
+## 2. Network Topology
+- Network diagram  
+- VLAN list, IDs, purposes, subnets  
+- Rationale for segmentation  
 
-- **Deploy Pi-hole (or AdGuard Home)**  
-  _Plan: Integrate DNS filtering into the network and decide on the final DNS stack configuration._
+## 3. Hardware Inventory
+- Firewalls, switches, APs, servers, IoT, media servers  
 
-- **Publish full network topology diagram and documentation**  
-  _Plan: Create and maintain clear, visually engaging diagrams for lab network architecture and include rationale for design choices._
+## 4. Services & Software Stack
+- Firewall config, VLAN setup, rules summary  
+- DNS (Unbound, OpenDNS, Pi-hole)  
+- VPN (WireGuard)  
+- SIEM (Security Onion)  
+- Metrics & monitoring (Grafana, Zabbix, LibreNMS)  
+- Media services (Jellyfin)
 
-- **Evaluate potential migration to Cisco ISR (C1100/1111 or newer)**  
-  _Plan: Transition routing responsibilities from OPNsense to a Cisco enterprise-grade router, pending hardware availability._
+## 5. Configuration Details
+- Interface assignments  
+- DHCP scopes  
+- NTP setup  
+- DNS forwarding  
+- VPN configs  
+- Firewall rules (summary only)
 
-- **Set up a backup VPN instance**  
-  _Plan: Deploy an OpenVPN or secondary WireGuard server for redundancy._
+## 6. Key Decisions & Rationale
+- Choices, pros/cons, alternatives  
 
-- **Deploy SNMP monitoring (or Zabbix)**  
-  _Plan: Implement a centralized solution for device health, status monitoring, and alerting._
+## 7. Lessons Learned
+- Challenges, fixes, future improvements  
 
-- **Explore Zero Trust network architecture**  
-  _Plan: Design and test a Zero Trust framework within the home lab environment._
+## 8. Future Plans
+- Hardware, services, features to add  
 
-- **Deploy a management VLAN (VLAN 99)**  
-  _Plan: Use VLAN 99 for network management services and possibly as a dead-end for unauthorized traffic._
-
-- **Network Hardening
-  -Configuration that exposes a large attack surface,
-  -open service ports, 
-  -weak or no authentication, 
-  -use of default credentials, 
-  -lack of secure communication / encryption**
-
-- **RADIUS/NAC server (like FreeRADIUS) to test AAA setups**   
-
-- **SYSLOG server to collect logs from Cisco devices**  
-
-
-
-
-
-
-
--NetFlow collector (like ntopng or nfdump) to parse Cisco NetFlow exports
+## 9. Resources
+- Links to official docs, tutorials, references  
