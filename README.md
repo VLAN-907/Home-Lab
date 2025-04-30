@@ -74,7 +74,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 ## VPN Configuration  
 
 - **WireGuard** VPN set up on OPNsense for secure remote access  
-- Documentation available under [docs/03-wireguard-vpn.md](./docs/03-wireguard-vpn.md)
+
 
 ---
 
@@ -88,9 +88,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 ## Backup & Monitoring  
 
-- Regular configuration backups via OPNsense  
-- Firmware update plan and snapshot schedule  
-- Future integration: syslog, NTP monitoring, and SNMP stats collection
+- Future integration: Reg Config Backups via OPNsense, Firmware update plan and scnapshot schedule, syslog, NTP monitoring, and SNMP stats collection
 
 ---
 
@@ -98,7 +96,6 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 - Integrate Ubiquiti or Cisco enterprise APs  
 - Add a managed Cisco switch  
-- Deploy Proxmox for VM hosting  
 - Implement network monitoring tools (Zabbix/LibreNMS)
 - Home Network Lab Documentation
 1. Project Overview
