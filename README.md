@@ -40,9 +40,9 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 ## Network Topology  
 
-![Network Diagram](./diagrams/network-diagram-v1.png)
+![Network Diagram](./drawings/Home Network Setup Diagram.png)
 
-*Add a clean diagram of your VLANs, physical and logical connections*
+
 
 ---
 
