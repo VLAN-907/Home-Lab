@@ -40,7 +40,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 ## Network Topology  
 
-[Network Diagram](./drawings/Home Network Setup Diagram.png)
+[Network Diagram](./diagrams/LabSetupDiagram.png)
 
 
 
