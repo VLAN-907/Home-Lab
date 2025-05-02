@@ -95,7 +95,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 ## Future Plans  
 
 
-[Future Projects](Future-Projects.md)
+[Future Projects](./docs/Future-Projects.md)
 
 
 
