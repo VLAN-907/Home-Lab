@@ -50,7 +50,7 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 
 - **OPNsense** — Firewall, Routing, VLAN Management  
 - **WireGuard VPN** — Remote secure access  
-- **Pi-hole** — DNS Filtering and Ad Blocking  
+- **Pi-hole** — DNS Filtering and Ad Blocking [Link to more info](./docs/pihole.md) 
 - **OpenDNS** — Cloud-based DNS Security  
 - **Unbound (DNS Resolver)** — Internal DNS resolution  
 - **Ubuntu Server** — Media services and Pi-hole  
