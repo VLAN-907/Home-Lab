@@ -1,0 +1,87 @@
+# Home Lab: InfluxDB and Telegraf Setup (May 2025)
+
+This document outlines the installation and configuration of **InfluxDB 2.x** and **Telegraf** on an Ubuntu 24.04 VM in my home lab. This setup collects and stores system metrics for future visualization with Grafana.
+
+---
+
+## 🔧 Services Installed
+
+- **InfluxDB 2.7.5** – Time-series database to store metrics
+- **Telegraf 1.30** – Lightweight metrics collection agent
+- *(Grafana planned but not installed yet)*
+
+---
+
+## 🧱 VM Environment
+
+- **OS:** Ubuntu 24.04
+- **IP Address:** `192.168.1.157`
+- **Proxmox bridge:** `vmbr0`
+- **Firewall (UFW):** Disabled for testing
+
+---
+
+## 📦 Installation Summary
+
+### 1. **Removed InfluxDB 1.x**
+```bash
+sudo systemctl stop influxdb
+sudo apt-get remove --purge influxdb -y
+sudo rm -rf /etc/influxdb /var/lib/influxdb
+
+
+
+2. Installed InfluxDB 2.x
+bash
+Copy code
+wget https://dl.influxdata.com/influxdb/releases/influxdb2_2.7.5-1_amd64.deb
+sudo dpkg -i influxdb2_2.7.5-1_amd64.deb
+sudo systemctl enable --now influxdb
+3. InfluxDB Setup via Web UI
+Accessed at: http://192.168.1.157:8086
+
+Created:
+
+Username: admin
+
+Organization: HomeLab
+
+Bucket: system_metrics
+
+API Token: Used by Telegraf
+
+⚙️ Telegraf Configuration
+Installed Telegraf 1.30
+bash
+Copy code
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.30.0-1_amd64.deb
+sudo dpkg -i telegraf_1.30.0-1_amd64.deb
+Configured Output Plugin
+Edited /etc/telegraf/telegraf.conf:
+
+toml
+Copy code
+[[outputs.influxdb_v2]]
+  urls = ["http://127.0.0.1:8086"]
+  token = "YOUR_API_TOKEN"
+  organization = "HomeLab"
+  bucket = "system_metrics"
+Started Telegraf
+bash
+Copy code
+sudo systemctl enable --now telegraf
+✅ Validation
+Verified system metrics were being written to InfluxDB via the Explore tab
+
+Confirmed services were running:
+
+systemctl status influxdb
+
+systemctl status telegraf
+
+📌 Next Steps
+ Install and configure Grafana
+
+ Add InfluxDB as a Grafana data source
+
+ Build dashboards for CPU, memory, disk, and network metrics
