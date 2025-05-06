@@ -98,3 +98,45 @@ Grafana Integration: Potential to visualize Pi-hole metrics using Grafana dashbo
 vbnet
 Copy
 Edit
+
+
+# Pi-hole Secondary DNS Server Setup on Proxmox
+
+## Overview
+
+This guide documents the setup of a second Pi-hole DNS filtering instance hosted on a separate physical machine running Proxmox VE. The second Pi-hole ensures high availability and resilience for DNS filtering and network-wide ad blocking.
+
+---
+
+## Host Setup
+
+- **Hypervisor**: Proxmox VE
+- **VM OS**: Ubuntu Server 24.04 LTS
+- **VM Resources**:  
+  - CPU: 1–2 cores  
+  - RAM: 512MB–1GB  
+  - Disk: 4GB+  
+  - Network: Bridged (VirtIO or Intel E1000)
+
+---
+
+## Step 1: Create the VM in Proxmox
+
+1. Upload the Ubuntu Server ISO to Proxmox.
+2. Create a new VM and attach the ISO.
+3. Configure:
+   - Network: Use a bridged adapter (VLAN-aware if needed).
+   - Disk: Use `scsi` or `virtio`.
+   - Boot order: Set CD-ROM first, then disk.
+4. Start the VM and install Ubuntu Server.
+
+---
+
+## Step 2: Assign a Static IP
+
+You can either:
+- Set a static IP in the VM via Netplan:
+
+  ```bash
+  sudo nano /etc/netplan/01-netcfg.yaml
+
