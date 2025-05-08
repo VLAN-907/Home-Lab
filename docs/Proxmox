@@ -1,0 +1,104 @@
+
+# Proxmox Cluster Setup Guide
+
+## Overview
+
+This document describes the steps I followed to set up a Proxmox Virtual Environment (PVE) cluster with two nodes in my home lab. The cluster allows centralized management, VM/container migration, and (optionally) ZFS replication or high availability (HA).
+
+---
+
+## Hardware
+
+- **Node 1**: Main Proxmox server (hostname: `proxmox`, IP: `192.168.1.135`)
+- **Node 2**: Second Proxmox server (hostname: `pve2`, IP: `192.168.1.201`)
+
+Both nodes have static IPs and are connected to the same local LAN.
+
+---
+
+## Installation Steps
+
+### 1️⃣ Install Proxmox VE on Both Nodes
+
+- Download latest ISO from [Proxmox](https://www.proxmox.com/en/downloads).
+- Flash to USB (e.g., using balenaEtcher or Rufus).
+- Boot each machine and install Proxmox on local disk.
+- Assign static IP, unique hostname, and set up root password.
+
+### 2️⃣ Prepare First Node (Cluster Creator)
+
+On the first node:
+
+```bash
+pvecm create HomeLab --bindnet0_addr 192.168.1.135
+```
+- `HomeLab` is the cluster name.
+- `--bindnet0_addr` specifies which interface/IP to use.
+
+Check cluster status:
+
+```bash
+pvecm status
+```
+
+If needed (single-node cluster):
+```bash
+pvecm expected 1
+```
+
+### 3️⃣ Prepare Second Node (Joining)
+
+On the second node, **clean up any previous failed join**:
+
+```bash
+systemctl stop pve-cluster corosync
+umount -l /etc/pve || true
+rm -rf /etc/pve/nodes/*
+rm -rf /etc/corosync/*
+rm -rf /var/lib/corosync/*
+rm -f /var/lib/pve-cluster/config.db*
+reboot
+```
+
+### 4️⃣ Join Cluster
+
+After reboot, on the second node:
+
+```bash
+pvecm add 192.168.1.135 --force
+```
+
+This connects to the first node using its IP. The `--force` skips SSL hostname verification (fine for home lab).
+
+### 5️⃣ Verify Cluster
+
+On either node:
+
+```bash
+pvecm status
+```
+
+Expected output:
+
+- `Nodes: 2`
+- `Quorate: Yes`
+- Membership showing both nodes
+
+Check the web interface (`https://<node-ip>:8006`) — both nodes should appear under **Datacenter**.
+
+---
+
+## Notes
+
+- Without shared storage, live migration will require local disk copies.
+- ZFS replication can provide periodic syncing between nodes.
+- Two-node clusters are fragile for quorum — consider adding a **qdevice** or third node for HA setups.
+
+---
+
+## Future Work
+
+- Set up ZFS replication.
+- Explore adding a quorum device or third Proxmox node.
+- Test live VM/container migration.
+
