@@ -53,7 +53,8 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 - **Pi-hole** — DNS Filtering and Ad Blocking [Link to more info](./docs/pihole.md) 
 - **OpenDNS** — Cloud-based DNS Security  
 - **Unbound (DNS Resolver)** — Internal DNS resolution  
-- **Ubuntu Server** — Media services and Pi-hole  
+- **Ubuntu Server** — Media services and Pi-hole
+- **Security Onion - IDS (Intrusion Detction), NSM (Network Security Monitoring), Log Management and Threat Hunting [Link to more info](./docs/SecurityOnion.md) 
 
 ---
 
