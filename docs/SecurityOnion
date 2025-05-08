@@ -1,0 +1,74 @@
+# 🛡️ Security Onion Deployment Summary
+
+## Overview
+
+This document summarizes the setup and configuration of the Security Onion deployment in my home lab environment.
+
+---
+
+## 🌐 Network Architecture
+
+| Role              | Details                                    |
+|-------------------|-------------------------------------------|
+| Management NIC    | `ens18` – static IP on management VLAN / LAN |
+| Sniffer NIC       | `ens19` – attached to switch SPAN/mirror port, no IP, listens in promiscuous mode |
+| Switch Setup      | TP-Link T1600G-28PS with port mirroring configured, feeding mirrored LAN traffic to Proxmox host NIC |
+| Virtualization    | Proxmox VM, 2 NICs (management + sniffer), bridge config: `vmbr0` (LAN), `vmbr1` (mirror) |
+
+---
+
+## ⚙️ Security Onion Configuration
+
+| Component           | Status            |
+|---------------------|-------------------|
+| Security Onion Version | [insert version here] |
+| Install Type        | Standalone Deployment |
+| Management IP       | `https://<your-management-ip>` |
+| Admin User          | [admin username set during install] |
+| Services Running    | Zeek, Suricata, Elasticsearch, Logstash, Kibana, SOC, Strelka, Redis, Nginx, etc. |
+| Salt Orchestration | Successfully applied |
+
+---
+
+## 🔑 Access Information
+
+- **SOC Dashboard (GUI):**  
+  `https://<your-management-ip>`  
+  Login with the admin credentials set during install.
+
+- **CLI Access (SSH):**  
+  SSH into the management IP using your configured user.
+
+- **Service Check:**  
+  Run:
+  ```bash
+  sudo so-status
+🛠️ Custom Lab Notes
+Switch mirroring configured on TP-Link T1600G-28PS.
+
+Proxmox NIC attached to mirror port receives live LAN traffic.
+
+Sniffer NIC (ens19) explicitly configured with:
+
+ini
+Copy
+Edit
+BOOTPROTO=none
+IPV6INIT=no
+ONBOOT=yes
+Successfully disabled IPv6 to prevent setup conflicts.
+
+✅ Next Steps
+Test rule triggers with lab-generated traffic (e.g., nmap scan, basic attacks).
+
+Update Suricata and Zeek signatures.
+
+Tune alert thresholds and notifications.
+
+Expand with Wazuh or Elastic Agent for endpoint monitoring.
+
+📅 Date of Setup
+Completed: 2025-05-08
+
+🚀 Notes
+This setup marks a major milestone in building out my home lab for network security monitoring, intrusion detection, and hands-on defensive security practice using enterprise-grade open-source tools.
