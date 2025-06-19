@@ -57,8 +57,9 @@
 - DNS (Unbound, OpenDNS, Pi-hole)  
 - VPN (WireGuard)  
 - SIEM (Security Onion)  
-- Metrics & monitoring (Grafana, Zabbix, LibreNMS)  
-- Media services (Jellyfin)
+- Metrics & monitoring (Grafana, Zabbix, LibreNMS)  - Granfana is set up.  Need to finish documentation. 
+- Media services (Jellyfin) - This is set up.  Need to complete documentation.
+- Install Next Cloud in my environment and evaulate moving away from Office 365 for family needs: https://nextcloud.com/
 
 ## 5. Configuration Details
 - Interface assignments  
