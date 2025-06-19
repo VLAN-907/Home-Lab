@@ -60,10 +60,11 @@
 - Metrics & monitoring (Grafana, Zabbix, LibreNMS)  - Granfana is set up.  Need to finish documentation. 
 - Media services (Jellyfin) - This is set up.  Need to complete documentation.
 - Install Next Cloud in my environment and evaulate moving away from Office 365 for family needs: https://nextcloud.com/
+- Home Assistant: https://www.home-assistant.io/
 - Host family Ancestry software: webtrees: https://webtrees.net/ ; possible needs:
--   Linux server with Apache or Nginx
--   PHP 8.1+ with extensions: pdo, pdo_mysql, mbstring, xml, zip, gd, intl
--   MariaDB or MySQL
+  - Linux server with Apache or Nginx
+  - PHP 8.1+ with extensions: pdo, pdo_mysql, mbstring, xml, zip, gd, intl
+  - MariaDB or MySQL
 
 ## 5. Configuration Details
 - Interface assignments  
