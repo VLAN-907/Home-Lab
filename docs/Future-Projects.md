@@ -53,18 +53,22 @@
 - Firewalls, switches, APs, servers, IoT, media servers  
 
 ## 4. Services & Software Stack
+- Media services (Jellyfin) - This is set up.  Need to complete documentation.
+- Jellyfin set up with passive loadbalancing/redundancy
+- True Backup System for Network Backup
 - Firewall config, VLAN setup, rules summary  
 - DNS (Unbound, OpenDNS, Pi-hole)  
 - VPN (WireGuard)  
 - SIEM (Security Onion)  
 - Metrics & monitoring (Grafana, Zabbix, LibreNMS)  - Granfana is set up.  Need to finish documentation. 
-- Media services (Jellyfin) - This is set up.  Need to complete documentation.
 - Install Next Cloud in my environment and evaulate moving away from Office 365 for family needs: https://nextcloud.com/
 - Home Assistant: https://www.home-assistant.io/
 - Host family Ancestry software: webtrees: https://webtrees.net/ ; possible needs:
   - Linux server with Apache or Nginx
   - PHP 8.1+ with extensions: pdo, pdo_mysql, mbstring, xml, zip, gd, intl
   - MariaDB or MySQL
+- Create App/Game for my Kids
+  
 
 ## 5. Configuration Details
 - Interface assignments  
