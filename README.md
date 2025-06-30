@@ -13,7 +13,8 @@ Welcome to my personal network lab project! This repository documents the design
 - [VLAN Design](#vlan-design)  
 - [VPN Configuration](#vpn-configuration)  
 - [DNS & Security](#dns--security)  
-- [Backup & Monitoring](#backup--monitoring)  
+- [Backup & Monitoring](#backup--monitoring)
+- [WebTrees - Family Geneology - Self Hosted](#Webtrees Self-Hosted Genealogy Platform)
 - [Future Plans](#future-plans)
 
 ---
@@ -90,6 +91,55 @@ The lab is designed to simulate small-to-mid-sized network environments while pr
 ## Backup & Monitoring  
 
 - Future integration: Reg Config Backups via OPNsense, Firmware update plan and scnapshot schedule, syslog, NTP monitoring, and SNMP stats collection
+
+---
+
+## Webtrees Self-Hosted Genealogy Platform
+
+# 🧬 Webtrees Self-Hosted Genealogy Platform
+
+## Project Summary
+This project documents my deployment and configuration of [Webtrees](https://webtrees.net/), an open-source, self-hosted genealogy application for managing and exploring family trees. The goal is to maintain full control over personal family history data while building hands-on experience with Linux server administration, LAMP stack management, and secure web hosting practices.
+
+---
+
+## 🔧 Key Features
+- Self-hosted on **Ubuntu Server** within my home lab environment
+- Full **LAMP stack** deployment (Linux, Apache, MySQL/MariaDB, PHP)
+- Secured with **Let's Encrypt SSL** for encrypted HTTPS access
+- Automated **database and media backups**
+- Fully private setup — no reliance on third-party genealogy platforms
+
+---
+
+## 🎯 Why This Project?
+- Provides a **private, customizable platform** for family history research
+- Strengthens my skills in:
+  - Web server administration (**Apache2**)
+  - Database management (**MySQL/MariaDB**)
+  - Linux security, backups, and system automation
+- Supports long-term **digital preservation** of family records
+
+---
+
+## 🚀 Future Plans
+- Evaluate **Docker-based deployment** for easier portability
+- Integrate with existing **home network services** (DNS, backup systems)
+- Potential public-facing deployment with a domain and secure remote access
+
+---
+
+## 📂 Related Technologies
+- Ubuntu Server 22.04 LTS
+- Apache2
+- MySQL or MariaDB
+- PHP 8.x
+- Let's Encrypt (Certbot)
+- Webtrees 2.x
+
+---
+
+*This project reflects my ongoing efforts to build a secure, private, and reliable platform for family tree management while developing practical system administration skills in my home lab.*
 
 ---
 
