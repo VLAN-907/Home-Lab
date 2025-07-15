@@ -1,7 +1,7 @@
 # Future Home Network Stack Plans
 
 ##  Hardware
-- Integrate Ubiquiti or Cisco enterprise APs  
+- Integrate Ubiquiti APs  
 - Add a managed Cisco switch  
 - Expand server infrastructure (Proxmox cluster or additional lab servers)
 
@@ -45,19 +45,16 @@
 
 ## 4. Services & Software Stack
 - Media services (Jellyfin) - This is set up.  Need to complete documentation.
+- VMware set up on server
+- Truenas build out and NAS setup to support network
 - Jellyfin set up with passive loadbalancing/redundancy
 - True Backup System for Network Backup
-- Firewall config, VLAN setup, rules summary  
-- DNS (Unbound, OpenDNS, Pi-hole)  
+- Firewall config, VLAN setup, rules summary    
 - VPN (WireGuard)  
 - SIEM (Security Onion)  
-- Metrics & monitoring (Grafana, Zabbix, LibreNMS)  - Granfana is set up.  Need to finish documentation. 
+- Metrics & monitoring (Grafana, Zabbix, LibreNMS) 
 - Install Next Cloud in my environment and evaulate moving away from Office 365 for family needs: https://nextcloud.com/
 - Home Assistant: https://www.home-assistant.io/
-- Host family Ancestry software: webtrees: https://webtrees.net/ ; possible needs:
-  - Linux server with Apache or Nginx
-  - PHP 8.1+ with extensions: pdo, pdo_mysql, mbstring, xml, zip, gd, intl
-  - MariaDB or MySQL
 - Create App/Game for my Kids
   
 
@@ -84,4 +81,5 @@
 
 
 Netflow collector
+wire shark - automation and alerting?
 
