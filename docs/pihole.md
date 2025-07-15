@@ -1,142 +1,111 @@
-# Pi-hole DNS Filtering Setup
+# Pi-hole Setup on Proxmox VMs — Summary
 
 ## Overview
-
-- **Purpose**: Network-wide ad and tracker blocking using Pi-hole
-- **Host System**: Ubuntu VM running on Proxmox
-- **Pi-hole Version**: v5.11.1
-- **Network Integration**: OPNsense firewall with VLAN segmentation
-
-## Installation Steps
-
-1. **System Update**
-   ```bash
-   sudo apt update && sudo apt upgrade -y
-Pi-hole Installation
-
-bash
-Copy
-Edit
-curl -sSL https://install.pi-hole.net | bash
-Static IP Assignment
-
-Configured a static IP for Pi-hole via OPNsense DHCP static mapping
-
-Configuration Details
-Upstream DNS Providers: OpenDNS (208.67.222.222, 208.67.220.220)
-
-DNSSEC: Enabled
-
-Query Logging: Enabled (Show Everything)
-
-Blocklists:
-
-StevenBlack Unified Hosts
-
-Firebog Ticked Green Lists
-
-Firewall Rules in OPNsense
-Allow Rule
-Action: Pass
-
-Interface: LAN or applicable VLAN
-
-Protocol: TCP/UDP
-
-Source: LAN net
-
-Destination: Pi-hole IP
-
-Destination Port: 53
-
-Description: Allow DNS to Pi-hole
-
-Block Rule
-Action: Block
-
-Interface: LAN or applicable VLAN
-
-Protocol: TCP/UDP
-
-Source: LAN net
-
-Destination: Any
-
-Destination Port: 53
-
-Description: Block all other DNS
-
-DHCP Configuration
-DNS server set to Pi-hole IP in OPNsense DHCP settings for all VLANs
-
-Devices obtain new leases with Pi-hole as their DNS server
-
-Monitoring and Maintenance
-Dashboard: http://pi.hole/admin
-
-Update Pi-hole
-
-bash
-Copy
-Edit
-pihole -up
-Update OS
-
-bash
-Copy
-Edit
-sudo apt update && sudo apt upgrade -y
-Query Log: Regularly review to monitor traffic patterns
-
-Notes
-Redundancy: Consider setting up a secondary Pi-hole instance for failover
-
-Unbound Integration: Future enhancement to add a recursive DNS resolver for increased privacy
-
-Grafana Integration: Potential to visualize Pi-hole metrics using Grafana dashboards
-
-vbnet
-Copy
-Edit
-
-
-# Pi-hole Secondary DNS Server Setup on Proxmox
-
-## Overview
-
-This guide documents the setup of a second Pi-hole DNS filtering instance hosted on a separate physical machine running Proxmox VE. The second Pi-hole ensures high availability and resilience for DNS filtering and network-wide ad blocking.
+This project documents the setup of two Pi-hole DNS servers running on separate Ubuntu Server VMs inside Proxmox. The goal was to provide reliable network-wide ad blocking with redundancy.
 
 ---
 
-## Host Setup
+## Steps Completed
 
-- **Hypervisor**: Proxmox VE
-- **VM OS**: Ubuntu Server 24.04 LTS
-- **VM Resources**:  
-  - CPU: 1–2 cores  
-  - RAM: 512MB–1GB  
-  - Disk: 4GB+  
-  - Network: Bridged (VirtIO or Intel E1000)
+### 1. Created Ubuntu Server VMs on Proxmox
+- Installed Ubuntu Server (minimal, no desktop) on two separate VMs.
+- Assigned static IP addresses to each VM via netplan:
+  - VM1: `192.168.1.6`
+  - VM2: `192.168.1.7`
 
 ---
 
-## Step 1: Create the VM in Proxmox
-
-1. Upload the Ubuntu Server ISO to Proxmox.
-2. Create a new VM and attach the ISO.
-3. Configure:
-   - Network: Use a bridged adapter (VLAN-aware if needed).
-   - Disk: Use `scsi` or `virtio`.
-   - Boot order: Set CD-ROM first, then disk.
-4. Start the VM and install Ubuntu Server.
-
----
-
-## Step 2: Assign a Static IP
-
-You can either:
-- Set a static IP in the VM via Netplan:
-
+### 2. Installed Pi-hole on Each VM
+- Installed Pi-hole using the official curl install script:
   ```bash
-  sudo nano /etc/netplan/01-netcfg.yaml
+  curl -sSL https://install.pi-hole.net | bash
+  ```
+- Configured initial Pi-hole settings and admin password.
+- Verified Pi-hole web UI accessibility.
+
+---
+
+### 3. Network and DNS Configuration
+- Set static IP addresses in netplan and applied them.
+- Configured Pi-hole to use public DNS servers (e.g., Cloudflare 1.1.1.1) temporarily during setup.
+- Switched Pi-hole’s nameserver back to `127.0.0.1` after setup for local DNS resolution.
+
+---
+
+### 4. Integrated Pi-hole with Cisco Router DHCP
+- Updated Cisco C1111 router DHCP pool configuration to set Pi-holes as DNS servers:
+  ```plaintext
+  ip dhcp pool LAN
+  dns-server 192.168.1.6 192.168.1.7
+  ```
+- Ensured clients receive Pi-hole IPs via DHCP for DNS.
+
+---
+
+### 5. Troubleshooting and Testing
+- Resolved SSH key exchange issues on the router by using SSH client options to accept older algorithms.
+- Verified DNS resolution from client devices pointed to Pi-hole IPs.
+- Tested Pi-hole functionality and blocking effectiveness.
+
+---
+
+### 6. Attempted Pi-hole Gravity Sync Setup (Retired)
+- Attempted to install Gravity Sync for syncing blocklists between Pi-holes.
+- Encountered DNS resolution issues with `gravity-sync.dev`.
+- Learned that Gravity Sync is retired and incompatible with Pi-hole v6+.
+- Decided to explore manual or custom syncing alternatives.
+
+---
+
+### 7. Next Steps and Recommendations
+- Consider manual syncing of blocklists or shared external lists.
+- Explore or develop custom scripts to sync configurations safely.
+- Keep Pi-hole updated and monitor community tools for new syncing solutions.
+
+---
+
+## Commands and Config Snippets
+
+### Setting Static IP in Netplan (Example for `192.168.1.6`)
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    ens18:
+      dhcp4: no
+      addresses:
+        - 192.168.1.6/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses:
+          - 1.1.1.1
+          - 8.8.8.8
+```
+
+Apply with:
+
+```bash
+sudo netplan apply
+```
+
+---
+
+### Updating Cisco DHCP DNS Servers
+
+```plaintext
+ip dhcp pool LAN
+dns-server 192.168.1.6 192.168.1.7
+```
+
+---
+
+### Checking Pi-hole Version
+
+```bash
+pihole -v
+```
+
+---
+
 
