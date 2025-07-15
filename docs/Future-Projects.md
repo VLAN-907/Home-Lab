@@ -8,7 +8,8 @@
 ##  Network Monitoring & SIEM
 - Implement network monitoring tools - snmp, etc (LibreNMS)
 - Set up Grafana dashboards for visual metrics
-- Deploy Security Onion for centralized SIEM and intrusion detection  
+- Deploy Security Onion for centralized SIEM and intrusion detection
+- Add Ansible - automation and configuration management tool - Routine IT tasks like updates, installs, config changes
 
 ##  Security & Key Management
 - Integrate a free, open-source key management system (HashiCorp Vault or alternatives)
